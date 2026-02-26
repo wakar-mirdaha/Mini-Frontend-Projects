@@ -4,6 +4,8 @@ A simple Digital Clock built using HTML, CSS, and JavaScript.
 This project displays the current time dynamically and updates every second using JavaScript.
 
 ---
+<img width="1443" height="797" alt="image" src="https://github.com/user-attachments/assets/bcb25fa7-77fa-4930-b8c5-9f067ae13006" />
+
 
 ## 🚀 Features
 
