@@ -14,10 +14,9 @@ h2{
 }
 
 .container {
-  background-color: rgba(30, 41, 59, 0.6);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur()10px;
-  width: 600px;
+  background-color: rgba(30, 41, 59, 0.4);
+  max-width: 500px;
+  width: 100%;
   padding: 40px;
   margin: 5px;
   border-radius: 10px;
