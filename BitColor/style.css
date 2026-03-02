@@ -1,0 +1,162 @@
+:root {
+    --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    --text-color: #f1f5f9;
+    --primary: #00f5ff;
+    --secondary: rgba(255, 255, 255, 0.05);
+    --accent: #8b5cf6;
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== Body ===== */
+body {
+    font-family: 'Poppins', system-ui, sans-serif;
+    background: var(--bg-gradient);
+    background-size: 300% 300%;
+    animation: gradientMove 12s ease infinite;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+/* Animated Gradient */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===== Grid ===== */
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: 2rem 0;
+}
+
+/* ===== Glass Card ===== */
+.color-card {
+    background: var(--secondary);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    padding: 12px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.color-card:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Color Swatch ===== */
+.color-swatch {
+    height: 120px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+/* ===== Code Text ===== */
+.color-code {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+/* ===== Controls ===== */
+.controls {
+    display: flex;
+    gap: 1rem;
+}
+
+/* ===== Buttons ===== */
+button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: rgba(0, 140, 255, 0.7);
+    color: var(--text-color);
+    border: 1px solid var(--glass-border);
+}
+.btn-primary:hover{
+     background: rgba(0, 140, 255, 0.9);
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.08);
+    color: var(--text-color);
+    border: 1px solid var(--glass-border);
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+/* ===== Toast ===== */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    background: rgba(0, 149, 255, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* ===== Hero Section ===== */
+.hero-section {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeIn 1.2s ease-out forwards;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1.5px;
+    background: linear-gradient(135deg, #00f5ff, #8b5cf6);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sub-title {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ===== Fade Animation ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+    .main-title { font-size: 2.5rem; }
+    .sub-title { font-size: 0.9rem; }
+}
