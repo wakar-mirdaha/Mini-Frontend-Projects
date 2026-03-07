@@ -3,29 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RandomQuote</title>
+    <title>Inspirify | Random Quote Generator</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="script.js" defer></script>
-
-
 </head>
 <body>
-    <h1>Generate Random Quote</h1>
+    <div class="background-blobs"></div>
     <div class="container">
-        <div class="quote-container">
-            <Span id="quote" class="quote">
-               
-            </Span>
+        <h1>Inspirify</h1>
+        <div class="quote-card">
+            <i class="fas fa-quote-left icon-quote"></i>
+            <p id="quote" class="quote">Click the button to get inspired.</p>
+            
             <div class="info-container">
-                <span id="author" class="author">
-                    
-                </span>
-                <span id="category" class="category">
-                    
-                </span>
+                <span id="author" class="author"></span>
+                <span id="category" class="category"></span>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="actions">
+                <button id="copy-btn" title="Copy to Clipboard"><i class="far fa-copy"></i></button>
+                <button id="generatebtn" class="generate">New Quote</button>
             </div>
         </div>
-        <button id="generatebtn" class="generate">Generate Quote</button>
     </div>
 </body>
 </html>
