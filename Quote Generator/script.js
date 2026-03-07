@@ -1,40 +1,62 @@
-const quoteEl = document.getElementById('quote');
-const authorEl = document.getElementById('author');
+const quoteText = document.getElementById('quote');
+const authorText = document.getElementById('author');
+const categoryText = document.getElementById('category');
 const btn = document.getElementById('generatebtn');
-const apiKey = "xRSVUz1pvwhLP7KuHVB4sqeVfbBTMDB3NNuSBDSo";
+const copyBtn = document.getElementById('copy-btn');
 
 async function getQuote() {
+    btn.innerText = "Loading...";
+    btn.disabled = true;
+    
     try {
-
-        btn.innerText = "Loading...";
-        btn.disabled = true;
-        quoteEl.style.opacity = 0.4; 
-
         const response = await fetch("https://api.api-ninjas.com/v1/quotes", {
-            headers: { "X-Api-Key": apiKey }
+            headers: {
+                "X-Api-Key": "xRSVUz1pvwhLP7KuHVB4sqeVfbBTMDB3NNuSBDSo"
+            }
         });
-
-        if (!response.ok) throw new Error("Network response was not ok");
+        
+        if (!response.ok) throw new Error("API Error");
 
         const data = await response.json();
-        const { quote, author, category } = data[0];
+        const item = data[0];
 
+ 
+        quoteText.innerText = item.quote;
+        authorText.innerText = item.author;
+        categoryText.innerText = item.category || "General";
         
-        quoteEl.innerText = quote;
-        authorEl.innerText = author;
-        document.getElementById('category').innerText = category;
-        
-       
-        quoteEl.style.opacity = 1;
-
     } catch (error) {
-        quoteEl.innerText = "Error: Could not fetch quote. Please check your connection.";
+        quoteText.innerText = "Oops! Something went wrong.";
+        authorText.innerText = "";
+        categoryText.innerText = "";
         console.error(error);
     } finally {
-        btn.innerText = "Generate Quote";
+        btn.innerText = "New Quote";
         btn.disabled = false;
     }
 }
 
+
+async function copyQuote() {
+    const textToCopy = `"${quoteText.innerText}" — ${authorText.innerText}`;
+    
+    try {
+        await navigator.clipboard.writeText(textToCopy);
+        
+    
+        const originalText = copyBtn.innerText;
+        copyBtn.innerText = "Copied!";
+        setTimeout(() => {
+            copyBtn.innerText = originalText;
+        }, 2000);
+    } catch (err) {
+        console.error("Failed to copy!", err);
+    }
+}
+
+
 btn.addEventListener('click', getQuote);
-getQuote(); 
+copyBtn.addEventListener('click', copyQuote);
+
+
+getQuote();
